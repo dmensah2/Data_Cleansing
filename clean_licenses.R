@@ -1,4 +1,4 @@
-#Author: Deidre Mensah
+#Author: Deidre
 #Clean BCC licsense information for geocoding
 #Date: 7/2/2020
 
@@ -12,7 +12,7 @@ library(ggmap)
 library(stringi)
 
 #register Google API Key
-register_google("AIzaSyAryhQfKiL1MiGHHiBO6wL_Nciw4LR61TU")
+register_google("YOUR API KEY")
 
 #read in csv of bcc liceses as data frame 
 licenses <- read.csv("C:/Weedmaps/Regional_Health/2020_08_07/tables/excel/BCC_Storefront.csv")
