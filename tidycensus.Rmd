@@ -10,7 +10,7 @@ library(sf)
 library(sp)
 library(raster)
 
-census_api_key("6df8ecbbdd76fb9432d628ae6178349765cba241")
+census_api_key("YOUR_API_KEY_GOES_HERE")
 
 v18 <- load_variables(2018, "acs5", cache = TRUE)
 
