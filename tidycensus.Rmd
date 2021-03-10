@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidycensus)
+library(tidyverse)
+library(sf)
+library(sp)
+library(raster)
+
+census_api_key("6df8ecbbdd76fb9432d628ae6178349765cba241")
+
+v18 <- load_variables(2018, "acs5", cache = TRUE)
+
+View(v18)
+
+ca <- get_acs(geography = "zipcode",
+              variables = c(totpop = "B00001_001"),
+              state = "CA",
+              year = 2018,
+              geometry = TRUE)
+
+ca_sp <- sf::as_Spatial(ca)
+
+st_write(ca, "ca.shp", driver="ESRI Shapefile")  # create to a shapefile
+
+raster::shapefile(ca_sp,"test.shp")
+```

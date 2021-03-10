@@ -1,0 +1,32 @@
+---
+title: "License Clean Up"
+output: html_notebook
+---
+
+```{r}
+#import libraries
+library(tidyverse)
+library(magrittr)
+library(readxl)
+library(purrr)
+library(dplyr)
+```
+
+```{r}
+path <- "C:/Weedmaps/Regional_Health/2020_08_07/tables/excel/License_Database.xlsx"
+
+#save file path as a string object
+licenses <- path  %>% 
+  #list spreadsheets
+  excel_sheets() %>%
+  #name spreadsheets based on list returned from previous function
+  purrr::set_names() %>%
+  #iterate through spreasdsheet and read each in as a excel file
+  purrr::map_df(
+  ~read_excel(path = path, sheet = .x, col_types = "text"),
+  .id = "State") %>%
+  #write out entire dataframe to csv
+   write_csv("Cannabis_Licenses_usa.csv")
+```
+
+
